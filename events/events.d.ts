@@ -1,4 +1,4 @@
-export type TEventName = 'search.product.change' | 'addToCart.click';
+export type TEventName = 'search.product.change' | 'search.product.keypress' | 'addToCart.click';
 
 export interface IEventEmitter {
 	registerEvent: (
