@@ -1,7 +1,7 @@
 import type { NextPage } from 'next';
 import { useCallback, useMemo } from 'react';
 
-import { useStore, useSelector } from 'react-redux';
+import { useStore, useSelector, useDispatch } from 'react-redux';
 
 import debounce from 'lodash.debounce';
 
@@ -16,19 +16,20 @@ const Home: NextPage<{ pageJson: any }> = (props) => {
 	const state = useSelector((state: any) => state.autocomplete);
 	const store = useStore();
 	const router = useRouter();
+	const dispatch = useDispatch()
 
 	// const [searchValue, setSearchValue] = useState('')
 
 	const showProduct = useCallback(
 		(products: any) => {
-			store.dispatch(
+			dispatch(
 				showAutocompleteBox({
 					showAutocomplete: true,
 					products
 				})
 			);
 		},
-		[store]
+		[dispatch]
 	);
 
 	const searchChange = useCallback(
